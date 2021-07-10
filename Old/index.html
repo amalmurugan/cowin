@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slot Finder</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--        <style>
+            body{
+                background: #0cebeb;  /* fallback for old browsers */
+                background: -webkit-linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            }
+        </style>-->
+    </head>
+    <body>
+        <div style="display:block;min-height:300px;">
+            <div style="min-width:15%;float:left;">
+                  <input type="radio" class="all" name="district_name" value="" checked="checked">
+                  <label for="html">None</label><br>
+                  <input type="radio" id="Alappuzha" name="district_name" value="301"  onchange="getValue(this)">
+                  <label for="html">Alappuzha</label><br>
+                  <input type="radio" id="Ernakulam" name="district_name" value="307" onchange="getValue(this)">
+                  <label for="css">Ernakulam</label><br>
+                  <input type="radio" id="Idukki" name="district_name" value="306" onchange="getValue(this)">
+                  <label for="javascript">Idukki</label><br>
+                  <input type="radio" id="Kannur" name="district_name" value="297" onchange="getValue(this)">
+                  <label for="javascript">Kannur</label><br>
+                  <input type="radio" id="Kasaragod" name="district_name" value="295" onchange="getValue(this)">
+                  <label for="javascript">Kasaragod</label><br>
+                  <input type="radio" id="Kollam" name="district_name" value="298" onchange="getValue(this)">
+                  <label for="javascript">Kollam</label><br>
+                  <input type="radio" id="Kottayam" name="district_name" value="304" onchange="getValue(this)">
+                  <label for="javascript">Kottayam</label><br>
+                  <input type="radio" id="Kozhikode" name="district_name" value="305" onchange="getValue(this)">
+                  <label for="javascript">Kozhikode</label><br>
+                  <input type="radio" id="Malappuram" name="district_name" value="302" onchange="getValue(this)">
+                  <label for="javascript">Malappuram</label><br>
+                  <input type="radio" id="Palakkad" name="district_name" value="308" onchange="getValue(this)">
+                  <label for="javascript">Palakkad</label><br>
+                  <input type="radio" id="Pathanamthitta" name="district_name" value="300" onchange="getValue(this)">
+                  <label for="javascript">Pathanamthitta</label><br>
+                  <input type="radio" id="Thiruvananthapuram" name="district_name" value="296" onchange="getValue(this)">
+                  <label for="javascript">Thiruvananthapuram</label><br>
+                  <input type="radio" id="Thrissur" name="district_name" value="303" onchange="getValue(this)">
+                  <label for="javascript">Thrissur</label><br>
+                  <input type="radio" id="Wayanad" name="district_name" value="299" onchange="getValue(this)">
+                  <label for="javascript">Wayanad</label><br>
+            </div>
+            <div style="min-width:15%;float:left;">
+                  <input type="radio" class="all" name="min_age_limit" checked="checked" value="">
+                  <label for="html"> All </label><br>
+                  <input type="radio" id="18" name="min_age_limit" value="18" >
+                  <label for="html"> 18 & Above </label><br>
+                  <input type="radio" id="18" name="min_age_limit" value="18" >
+                  <label for="css"> 18-44 Only</label><br>
+                  <input type="radio" id="45" name="min_age_limit" value="45" >
+                  <label for="javascript"> 45 & Above </label><br>
+            </div> 
+            <div style="min-width:15%;float:left;">
+                  <input type="radio" class="all" name="vaccine" value="" checked="checked">
+                  <label for="javascript">All</label><br>
+                  <input type="radio" id="Covishield" name="vaccine" value="COVISHIELD" >
+                  <label for="javascript">Covishield</label><br>
+                  <input type="radio" id="Covaxin" name="vaccine" value="COVAXIN" >
+                  <label for="javascript">Covaxin</label><br>
+                  <input type="radio" id="SputnikV" name="vaccine" value="SPUTNIKV" >
+                  <label for="javascript">Sputnik V</label><br>
+            </div>
+            <div style="min-width:15%;float:left;">
+                  <input type="radio" class="any" name="fee_type" value="" checked="checked">
+                  <label for="javascript">Any</label><br>
+                  <input type="radio" id="Free" name="fee_type" value="Free" >
+                  <label for="javascript">Free</label><br>
+                  <input type="radio" id="Paid" name="fee_type" value="Paid" >
+                  <label for="javascript">Paid</label><br>
+            </div>
+            <div style="min-width:15%;float:left;">
+                  <input type="radio" class="all" name="available_capacity_dose" value="" checked="checked">
+                  <label for="javascript">Any</label><br>
+                  <input type="radio" id="dose1" name="available_capacity_dose" value="1" >
+                  <label for="javascript">Dose1</label><br>
+                  <input type="radio" id="dose2" name="available_capacity_dose" value="2" >
+                  <label for="javascript">Dose2</label><br>
+            </div>
+            <div style="min-width:15%;float:left;">
+                <label>Pincode</label>
+                <input id="pincode"  name="pincode" type="text" placeholder="" />
+            </div>
+        </div>
+        <br/>
+        <div style="display:block;text-align: center;" id="div_placeholder">
+
+        </div>
+    </body>
+
+    <script>
+        function getValue(radio) {
+            process(radio);
+            setInterval(function () {
+                var district_name = document.querySelector('input[name="district_name"]:checked').value;
+                if (district_name) {
+                    process(radio);
+                }
+            }, 7000);
+        }
+        function process(radio) {
+//            var district_name = radio.value;
+            var district_name = document.querySelector('input[name="district_name"]:checked').value;
+            var vaccine = document.querySelector('input[name="vaccine"]:checked').value;
+            var min_age_limit = document.querySelector('input[name="min_age_limit"]:checked').value;
+            var fee_type = document.querySelector('input[name="fee_type"]:checked').value;
+            var available_capacity_dose = document.querySelector('input[name="available_capacity_dose"]:checked').value;
+            var pincode = document.querySelector('input[name="pincode"]').value;
+//            var elements = document.getElementsByClassName("formVal");
+            var formData = new FormData();
+            formData.append('district_name', district_name);
+            formData.append('vaccine', vaccine);
+            formData.append('min_age_limit', min_age_limit);
+            formData.append('fee_type', fee_type);
+            formData.append('available_capacity_dose', available_capacity_dose);
+            formData.append('pincode', pincode);
+//            for (var i = 0; i < elements.length; i++)
+//            {
+//                formData.append(elements[i].name, elements[i].value);
+//            }
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function ()
+            {
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                {
+                    document.getElementById("div_placeholder").innerHTML = xmlHttp.response;
+                    startCount();
+//                    document.getElementsByClassName("div_placeholder").innerHTML = xmlHttp.response;
+//                    alert(xmlHttp.responseText);
+                }
+            }
+            xmlHttp.open("post", "api_call.php");
+            xmlHttp.send(formData);
+        }
+
+        function startCount() {
+            var c = 7;
+            var timer = setInterval(function () {
+                if (c < 1) {
+                    clearInterval(timer);
+                }
+                document.getElementById("timer").innerHTML = c;
+                c = c - 1;
+            }, 1000);
+        }
+    </script>
+</html>
+
+
