@@ -12,11 +12,14 @@
                         background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
                     }
                 </style>-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"  crossorigin="anonymous">
     </head>
     <body>
-        <!--<h1 style="text-align: center;">Slot Finder</h1>-->
-        <div style="display:block;min-height:300px;">
-            <div style="min-width:15%;float:left;">
+        <!--<h1 style="text-align: center;">Slot Finder</h1><hr/>-->
+        <hr/>
+        <div class="col-md-12">
+            <div class="col-md-2">
                   <input type="radio" class="all" name="district_name" value="" checked="checked">
                   <label for="html">None</label><br>
                   <input type="radio" id="Alappuzha" name="district_name" value="301" class="process">
@@ -48,7 +51,7 @@
                   <input type="radio" id="Wayanad" name="district_name" value="299" class="process">
                   <label for="javascript">Wayanad</label><br>
             </div>
-            <div style="min-width:15%;float:left;">
+            <div class="col-md-2">
                   <input type="radio" class="all" name="min_age_limit" checked="checked" value="">
                   <label for="html"> All </label><br>
                   <input type="radio" id="18" name="min_age_limit" value="18" >
@@ -58,17 +61,17 @@
                   <input type="radio" id="45" name="min_age_limit" value="45" >
                   <label for="javascript"> 45 & Above </label><br>
             </div> 
-            <div style="min-width:15%;float:left;">
+            <div class="col-md-2">
                   <input type="radio" class="all" name="vaccine" value="" checked="checked">
                   <label for="javascript">All</label><br>
                   <input type="radio" id="Covishield" name="vaccine" value="COVISHIELD" >
                   <label for="javascript">Covishield</label><br>
                   <input type="radio" id="Covaxin" name="vaccine" value="COVAXIN" >
                   <label for="javascript">Covaxin</label><br>
-                  <input type="radio" id="SputnikV" name="vaccine" value="SPUTNIKV" >
+                  <input type="radio" id="SputnikV" name="vaccine" value="SPUTNIK V" >
                   <label for="javascript">Sputnik V</label><br>
             </div>
-            <div style="min-width:15%;float:left;">
+            <div class="col-md-2">
                   <input type="radio" class="any" name="fee_type" value="" checked="checked">
                   <label for="javascript">Any</label><br>
                   <input type="radio" id="Free" name="fee_type" value="Free" >
@@ -76,7 +79,7 @@
                   <input type="radio" id="Paid" name="fee_type" value="Paid" >
                   <label for="javascript">Paid</label><br>
             </div>
-            <div style="min-width:15%;float:left;">
+            <div class="col-md-2">
                   <input type="radio" class="all" name="available_capacity_dose" value="" checked="checked">
                   <label for="javascript">Any</label><br>
                   <input type="radio" id="dose1" name="available_capacity_dose" value="1" >
@@ -84,20 +87,28 @@
                   <input type="radio" id="dose2" name="available_capacity_dose" value="2" >
                   <label for="javascript">Dose2</label><br>
             </div>
-            <div style="min-width:15%;float:left;">
+            <div class="col-md-2">
+                  <input type="radio" id="today" name="check_date" value="" >
+                  <label for="javascript">Today</label><br>
+                  <input type="radio" id="tommorrow" name="check_date" value="" checked="checked" >
+                  <label for="javascript">Tommorrow</label><br>
+                  <input type="radio" id="dayafter" name="check_date" value="" >
+                  <label for="javascript">Dayafter</label><br>
+
                 <label>Pincode</label>
                 <input id="pincode"  name="pincode" type="text" placeholder="eg: 695001,695002,695003" />
             </div>
         </div>
-        <br/>
-        <div style="display:block;text-align: center;" id="div_placeholder">
+        <div class="col-md-12 text-center" id="div_placeholder">
 
         </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"  crossorigin="anonymous"></script>
     <script>
-        
+
         $('body').on('change', '.process', function (e) {
+            clearInterval(reloader);
             process();
             var reloader = setInterval(function () {
                 var district_name = document.querySelector('input[name="district_name"]:checked').value;
@@ -107,6 +118,18 @@
             }, 5000);
             e.preventDefault();
         });
+
+        var currentDate = new Date();
+        currentDate.setDate(currentDate.getDate());
+        var today = ("0" + currentDate.getDate()).slice(-2) + "-" + ("0" + (currentDate.getMonth() + 1)).slice(-2) + "-" + currentDate.getFullYear();
+        currentDate.setDate(currentDate.getDate() + 1);
+        var tommorrow = ("0" + currentDate.getDate()).slice(-2) + "-" + ("0" + (currentDate.getMonth() + 1)).slice(-2) + "-" + currentDate.getFullYear();
+        currentDate.setDate(currentDate.getDate() + 1);
+        var dayafter = ("0" + currentDate.getDate()).slice(-2) + "-" + ("0" + (currentDate.getMonth() + 1)).slice(-2) + "-" + currentDate.getFullYear();
+        $('#today').val(today);
+        $('#tommorrow').val(tommorrow);
+        $('#dayafter').val(dayafter);
+
         var playsound = 0;
         function process() {
             var district_name = document.querySelector('input[name="district_name"]:checked').value;
@@ -115,21 +138,18 @@
             var min_age_limit = document.querySelector('input[name="min_age_limit"]:checked').value;
             var fee_type = document.querySelector('input[name="fee_type"]:checked').value;
             var available_capacity_dose = document.querySelector('input[name="available_capacity_dose"]:checked').value;
+            var check_date = document.querySelector('input[name="check_date"]:checked').value;
             var pincode = document.querySelector('input[name="pincode"]').value;
             var pincodeArr = pincode.split(',');
-            var currentDate = new Date();
-//                        currentDate.setDate(currentDate.getDate() - 2);//today for testing
-            currentDate.setDate(currentDate.getDate() + 1);
-            var tommorrow = ("0" + currentDate.getDate()).slice(-2) + "-" + ("0" + (currentDate.getMonth() + 1)).slice(-2) + "-" + currentDate.getFullYear();
-            var path = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=' + district_name + '&date=' + tommorrow;
+            var overallList=0;
+            var path = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=' + district_name + '&date=' + check_date;
             $.ajax({
                 url: path,
                 type: "GET",
                 success: function (response) {
                     var sessions = response.sessions;
-
-                    var table = '<h2>Checking slot availability for ' + district_disp + ' on ' + tommorrow + '</h2>. Refreshing in <span id="timer"></span>';
-                    table += '<table border="1" style="width:100%">';
+                    var table = '<h2>Checking slot availability for ' + district_disp + ' on ' + check_date + ' <a target="_blank" href="https://selfregistration.cowin.gov.in/selfregistration"><button class="btn btn-sm btn-primary">Goto Cowin Self Registration</button></a></h2> Refreshing in <span id="timer"></span>';
+                    table += '<table border="1" style="width:100%" class="table table-responsive">';
                     table += '<tr>';
                     table += '<th>Sl No.</th>';
                     table += '<th>Min. Age</th>';
@@ -146,7 +166,7 @@
                     for (const resp of sessions) {
                         if (!vaccine || vaccine === resp.vaccine) {
                             if (!fee_type || fee_type === resp.fee_type) {
-                                if ((!available_capacity_dose && (resp.available_capacity_dose1 > 1 || resp.available_capacity_dose2 > 1)) || ((available_capacity_dose === 1 && resp.available_capacity_dose1 > 1) || (available_capacity_dose === 2 && resp.available_capacity_dose2 > 1))) {
+                                if (((!available_capacity_dose && (resp.available_capacity_dose1 > 1 || resp.available_capacity_dose2 > 1)) || ((available_capacity_dose === 1 && resp.available_capacity_dose1 > 1) || (available_capacity_dose === 2 && resp.available_capacity_dose2 > 1))) || overallList === 1) {
                                     if (!pincode || pincodeArr.includes(String(resp.pincode))) {
                                         if (!min_age_limit || min_age_limit === resp.min_age_limit) {
                                             table += '<tr>';
