@@ -19,33 +19,33 @@
             <div style="min-width:15%;float:left;">
                   <input type="radio" class="all" name="district_name" value="" checked="checked">
                   <label for="html">None</label><br>
-                  <input type="radio" id="Alappuzha" name="district_name" value="301"  onchange="getValue(this)">
+                  <input type="radio" id="Alappuzha" name="district_name" value="301" class="process">
                   <label for="html">Alappuzha</label><br>
-                  <input type="radio" id="Ernakulam" name="district_name" value="307" onchange="getValue(this)">
+                  <input type="radio" id="Ernakulam" name="district_name" value="307" class="process">
                   <label for="css">Ernakulam</label><br>
-                  <input type="radio" id="Idukki" name="district_name" value="306" onchange="getValue(this)">
+                  <input type="radio" id="Idukki" name="district_name" value="306" class="process">
                   <label for="javascript">Idukki</label><br>
-                  <input type="radio" id="Kannur" name="district_name" value="297" onchange="getValue(this)">
+                  <input type="radio" id="Kannur" name="district_name" value="297" class="process">
                   <label for="javascript">Kannur</label><br>
-                  <input type="radio" id="Kasaragod" name="district_name" value="295" onchange="getValue(this)">
+                  <input type="radio" id="Kasaragod" name="district_name" value="295" class="process">
                   <label for="javascript">Kasaragod</label><br>
-                  <input type="radio" id="Kollam" name="district_name" value="298" onchange="getValue(this)">
+                  <input type="radio" id="Kollam" name="district_name" value="298" class="process">
                   <label for="javascript">Kollam</label><br>
-                  <input type="radio" id="Kottayam" name="district_name" value="304" onchange="getValue(this)">
+                  <input type="radio" id="Kottayam" name="district_name" value="304" class="process">
                   <label for="javascript">Kottayam</label><br>
-                  <input type="radio" id="Kozhikode" name="district_name" value="305" onchange="getValue(this)">
+                  <input type="radio" id="Kozhikode" name="district_name" value="305" class="process">
                   <label for="javascript">Kozhikode</label><br>
-                  <input type="radio" id="Malappuram" name="district_name" value="302" onchange="getValue(this)">
+                  <input type="radio" id="Malappuram" name="district_name" value="302" class="process">
                   <label for="javascript">Malappuram</label><br>
-                  <input type="radio" id="Palakkad" name="district_name" value="308" onchange="getValue(this)">
+                  <input type="radio" id="Palakkad" name="district_name" value="308" class="process">
                   <label for="javascript">Palakkad</label><br>
-                  <input type="radio" id="Pathanamthitta" name="district_name" value="300" onchange="getValue(this)">
+                  <input type="radio" id="Pathanamthitta" name="district_name" value="300" class="process">
                   <label for="javascript">Pathanamthitta</label><br>
-                  <input type="radio" id="Thiruvananthapuram" name="district_name" value="296" onchange="getValue(this)">
+                  <input type="radio" id="Thiruvananthapuram" name="district_name" value="296" class="process">
                   <label for="javascript">Thiruvananthapuram</label><br>
-                  <input type="radio" id="Thrissur" name="district_name" value="303" onchange="getValue(this)">
+                  <input type="radio" id="Thrissur" name="district_name" value="303" class="process">
                   <label for="javascript">Thrissur</label><br>
-                  <input type="radio" id="Wayanad" name="district_name" value="299" onchange="getValue(this)">
+                  <input type="radio" id="Wayanad" name="district_name" value="299" class="process">
                   <label for="javascript">Wayanad</label><br>
             </div>
             <div style="min-width:15%;float:left;">
@@ -96,114 +96,108 @@
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     <script>
-                    function getValue(radio) {
-                        process();
-                        var reloader = setInterval(function () {
-                            var district_name = document.querySelector('input[name="district_name"]:checked').value;
-                            if (district_name) {
-                                process();
-                            }
-                        }, 7000);
-//                        clearInterval(reloader);
-                    }
-                    var playsound = 0;
-                    function process() {
-                        var district_name = document.querySelector('input[name="district_name"]:checked').value;
-                        var district_disp = document.querySelector('input[name="district_name"]:checked').id;
-                        var vaccine = document.querySelector('input[name="vaccine"]:checked').value;
-                        var min_age_limit = document.querySelector('input[name="min_age_limit"]:checked').value;
-                        var fee_type = document.querySelector('input[name="fee_type"]:checked').value;
-                        var available_capacity_dose = document.querySelector('input[name="available_capacity_dose"]:checked').value;
-                        var pincode = document.querySelector('input[name="pincode"]').value;
-                        var pincodeArr = pincode.split(',');
-                        var currentDate = new Date();
+        
+        $('body').on('change', '.process', function (e) {
+            process();
+            var reloader = setInterval(function () {
+                var district_name = document.querySelector('input[name="district_name"]:checked').value;
+                if (district_name) {
+                    process();
+                }
+            }, 5000);
+            e.preventDefault();
+        });
+        var playsound = 0;
+        function process() {
+            var district_name = document.querySelector('input[name="district_name"]:checked').value;
+            var district_disp = document.querySelector('input[name="district_name"]:checked').id;
+            var vaccine = document.querySelector('input[name="vaccine"]:checked').value;
+            var min_age_limit = document.querySelector('input[name="min_age_limit"]:checked').value;
+            var fee_type = document.querySelector('input[name="fee_type"]:checked').value;
+            var available_capacity_dose = document.querySelector('input[name="available_capacity_dose"]:checked').value;
+            var pincode = document.querySelector('input[name="pincode"]').value;
+            var pincodeArr = pincode.split(',');
+            var currentDate = new Date();
 //                        currentDate.setDate(currentDate.getDate() - 2);//today for testing
-                        currentDate.setDate(currentDate.getDate() + 1);
-                        var tommorrow = ("0" + currentDate.getDate()).slice(-2) + "-" + ("0" + (currentDate.getMonth() + 1)).slice(-2) + "-" + currentDate.getFullYear();
-                        var path = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=' + district_name + '&date=' + tommorrow;
-                        $.ajax({
-                            url: path,
-                            type: "GET",
-                            success: function (response) {
-                                var sessions = response.sessions;
+            currentDate.setDate(currentDate.getDate() + 1);
+            var tommorrow = ("0" + currentDate.getDate()).slice(-2) + "-" + ("0" + (currentDate.getMonth() + 1)).slice(-2) + "-" + currentDate.getFullYear();
+            var path = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=' + district_name + '&date=' + tommorrow;
+            $.ajax({
+                url: path,
+                type: "GET",
+                success: function (response) {
+                    var sessions = response.sessions;
 
-                                var table = '<h2>Checking slot availability for ' + district_disp + ' on ' + tommorrow + '</h2>. Refreshing in <span id="timer"></span>';
-                                table += '<table border="1" style="width:100%">';
-                                table += '<tr>';
-                                table += '<th>Sl No.</th>';
-                                table += '<th>Min. Age</th>';
-                                table += '<th>Fee Type</th>';
-                                table += '<th>Vaccine</th>';
-                                table += '<th>Dose 1</th>';
-                                table += '<th>Dose 2</th>';
-                                table += '<th>Session</th>';
-                                table += '<th>Center Name</th>';
-                                table += '<th>Pincode</th>';
-                                table += '</tr>';
-                                var i = 1;
-                                var availability_count = 0;
-                                for (const resp of sessions) { // You can use `let` instead of `const` if you like
-//                                    console.log(!vaccine || vaccine === resp.vaccine);
-//                                    console.log(!fee_type || fee_type === resp.fee_type);
-//                                    console.log((!available_capacity_dose && (resp.available_capacity_dose1 > 1 || resp.available_capacity_dose2 > 1)) || ((available_capacity_dose === 1 && resp.available_capacity_dose1 > 1) || (available_capacity_dose === 2 && resp.available_capacity_dose2 > 1)));
-//                                    console.log(!pincode || pincode === resp.pincode);
-//                                    console.log(!min_age_limit || min_age_limit === resp.min_age_limit);
-//                                    return false;
-                                    if (!vaccine || vaccine === resp.vaccine) {
-                                        if (!fee_type || fee_type === resp.fee_type) {
-                                            if ((!available_capacity_dose && (resp.available_capacity_dose1 > 1 || resp.available_capacity_dose2 > 1)) || ((available_capacity_dose === 1 && resp.available_capacity_dose1 > 1) || (available_capacity_dose === 2 && resp.available_capacity_dose2 > 1))) {
-                                                if (!pincode || pincodeArr.includes(String(resp.pincode))) {
-//                                                if (!pincode || pincode === resp.pincode) {
-                                                    if (!min_age_limit || min_age_limit === resp.min_age_limit) {
-                                                        table += '<tr>';
-                                                        table += '<td>' + i + '</td>';
-                                                        table += '<td>' + resp.min_age_limit + '</td>';
-                                                        table += '<td>' + resp.fee_type + '</td>';
-                                                        table += '<td>' + resp.vaccine + '</td>';
-                                                        table += '<td>' + resp.available_capacity_dose1 + '</td>';
-                                                        table += '<td>' + resp.available_capacity_dose2 + '</td>';
-                                                        table += '<td>' + resp.from + '-' + resp.to + '</td>';
-                                                        table += '<td>' + resp.name + '</td>';
-                                                        table += '<td>' + resp.pincode + '</td>';
-                                                        table += '</tr>';
-                                                        i = i + 1;
-                                                        availability_count = availability_count + 1;
-                                                        playsound = 1;
-                                                    }
-                                                }
-                                            }
+                    var table = '<h2>Checking slot availability for ' + district_disp + ' on ' + tommorrow + '</h2>. Refreshing in <span id="timer"></span>';
+                    table += '<table border="1" style="width:100%">';
+                    table += '<tr>';
+                    table += '<th>Sl No.</th>';
+                    table += '<th>Min. Age</th>';
+                    table += '<th>Fee Type</th>';
+                    table += '<th>Vaccine</th>';
+                    table += '<th>Dose 1</th>';
+                    table += '<th>Dose 2</th>';
+                    table += '<th>Session</th>';
+                    table += '<th>Center Name</th>';
+                    table += '<th>Pincode</th>';
+                    table += '</tr>';
+                    var i = 1;
+                    var availability_count = 0;
+                    for (const resp of sessions) {
+                        if (!vaccine || vaccine === resp.vaccine) {
+                            if (!fee_type || fee_type === resp.fee_type) {
+                                if ((!available_capacity_dose && (resp.available_capacity_dose1 > 1 || resp.available_capacity_dose2 > 1)) || ((available_capacity_dose === 1 && resp.available_capacity_dose1 > 1) || (available_capacity_dose === 2 && resp.available_capacity_dose2 > 1))) {
+                                    if (!pincode || pincodeArr.includes(String(resp.pincode))) {
+                                        if (!min_age_limit || min_age_limit === resp.min_age_limit) {
+                                            table += '<tr>';
+                                            table += '<td>' + i + '</td>';
+                                            table += '<td>' + resp.min_age_limit + '</td>';
+                                            table += '<td>' + resp.fee_type + '</td>';
+                                            table += '<td>' + resp.vaccine + '</td>';
+                                            table += '<td>' + resp.available_capacity_dose1 + '</td>';
+                                            table += '<td>' + resp.available_capacity_dose2 + '</td>';
+                                            table += '<td>' + resp.from + '-' + resp.to + '</td>';
+                                            table += '<td>' + resp.name + '</td>';
+                                            table += '<td>' + resp.pincode + '</td>';
+                                            table += '</tr>';
+                                            i = i + 1;
+                                            availability_count = availability_count + 1;
+                                            playsound = 1;
                                         }
                                     }
                                 }
-                                startCount();
-                                if (sessions.length < 1 || availability_count === 0) {
-                                    table += '<tr><td colspan="9">No Records Available</td></tr>';
-                                    $('#div_placeholder').html('');
-                                    $('#div_placeholder').html(table);
-                                    return false;
-                                }
-                                if (playsound === 1) {
-                                    var myAudio = new Audio('buzzer.wav');
-                                    myAudio.play();
-                                }
-                                table += '</table>';
-                                $('#div_placeholder').html('');
-                                $('#div_placeholder').html(table);
                             }
-                        });
-
+                        }
                     }
-
-                    function startCount() {
-                        var c = 7;
-                        var timer = setInterval(function () {
-                            if (c <= 1) {
-                                clearInterval(timer);
-                            }
-                            document.getElementById("timer").innerHTML = c;
-                            c = c - 1;
-                        }, 1000);
+                    startCount();
+                    if (sessions.length < 1 || availability_count === 0) {
+                        table += '<tr><td colspan="9">No Records Available</td></tr>';
+                        $('#div_placeholder').html('');
+                        $('#div_placeholder').html(table);
+                        return false;
                     }
+                    if (playsound === 1) {
+                        var myAudio = new Audio('buzzer.wav');
+                        myAudio.play();
+                    }
+                    table += '</table>';
+                    $('#div_placeholder').html('');
+                    $('#div_placeholder').html(table);
+                }
+            });
+
+        }
+
+        function startCount() {
+            var c = 5;
+            var timer = setInterval(function () {
+                if (c <= 1) {
+                    clearInterval(timer);
+                }
+                document.getElementById("timer").innerHTML = c;
+                c = c - 1;
+            }, 1000);
+        }
     </script>
 </html>
 
