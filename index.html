@@ -5,111 +5,113 @@
         <meta charset="UTF-8">
         <meta name="author" content="Amal">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--        <style>
-                    body{
-                        background: #0cebeb;  /* fallback for old browsers */
-                        background: -webkit-linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb);  /* Chrome 10-25, Safari 5.1-6 */
-                        background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-                    }
-                </style>-->
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+        <style>
+            /*            body {
+                            background: radial-gradient(1.5em 6.28571em at 1.95em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(1.5em 6.28571em at -0.45em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 1.5em 5.5em, radial-gradient(2.3em 4.57143em at 2.99em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(2.3em 4.57143em at -0.69em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%) 2.3em 4em, radial-gradient(3.5em 6.28571em at 4.55em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(3.5em 6.28571em at -1.05em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 3.5em 5.5em, radial-gradient(#15ffa5, #00ced1);
+                            background-color: mediumspringgreen;
+                            background-size: 1.5em 11em, 1.5em 11em, 2.3em 8em, 2.3em 8em, 3.5em 11em, 3.5em 11em, 100% 100%;
+                            background-repeat: repeat;
+                        }*/
+        </style>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"  >
 
     </head>
     <body>
         <h1 style="text-align: center;">Vaccine Slot Availability Notifier</h1><hr/>
         <!--<hr/>-->
-        <div class="row col-md-12">
-            <div class="col-md-2 col-sm-12 col-xs-12">
-                  <input type="radio" class="all" name="district_name" value="" checked="checked">
-                  <label for="html">None</label><br>
-                  <input type="radio" id="Alappuzha" name="district_name" value="301" class="process">
-                  <label for="html">Alappuzha</label><br>
-                  <input type="radio" id="Ernakulam" name="district_name" value="307" class="process">
-                  <label for="css">Ernakulam</label><br>
-                  <input type="radio" id="Idukki" name="district_name" value="306" class="process">
-                  <label for="javascript">Idukki</label><br>
-                  <input type="radio" id="Kannur" name="district_name" value="297" class="process">
-                  <label for="javascript">Kannur</label><br>
-                  <input type="radio" id="Kasaragod" name="district_name" value="295" class="process">
-                  <label for="javascript">Kasaragod</label><br>
-                  <input type="radio" id="Kollam" name="district_name" value="298" class="process">
-                  <label for="javascript">Kollam</label><br>
-                  <input type="radio" id="Kottayam" name="district_name" value="304" class="process">
-                  <label for="javascript">Kottayam</label><br>
-                  <input type="radio" id="Kozhikode" name="district_name" value="305" class="process">
-                  <label for="javascript">Kozhikode</label><br>
-                  <input type="radio" id="Malappuram" name="district_name" value="302" class="process">
-                  <label for="javascript">Malappuram</label><br>
-                  <input type="radio" id="Palakkad" name="district_name" value="308" class="process">
-                  <label for="javascript">Palakkad</label><br>
-                  <input type="radio" id="Pathanamthitta" name="district_name" value="300" class="process">
-                  <label for="javascript">Pathanamthitta</label><br>
-                  <input type="radio" id="Thiruvananthapuram" name="district_name" value="296" class="process">
-                  <label for="javascript">Thiruvananthapuram</label><br>
-                  <input type="radio" id="Thrissur" name="district_name" value="303" class="process">
-                  <label for="javascript">Thrissur</label><br>
-                  <input type="radio" id="Wayanad" name="district_name" value="299" class="process">
-                  <label for="javascript">Wayanad</label><br>
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                  <input type="radio" class="all" name="min_age_limit" checked="checked" value="">
-                  <label for="html"> All </label><br>
-                  <input type="radio" id="18" name="min_age_limit" value="18" >
-                  <label for="html"> 18 & Above </label><br>
-                  <input type="radio" id="18" name="min_age_limit" value="18" >
-                  <label for="css"> 18-44 Only</label><br>
-                  <input type="radio" id="45" name="min_age_limit" value="45" >
-                  <label for="javascript"> 45 & Above </label><br>
-            </div> 
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                  <input type="radio" class="all" name="vaccine" value="" checked="checked">
-                  <label for="javascript">All</label><br>
-                  <input type="radio" id="Covishield" name="vaccine" value="COVISHIELD" >
-                  <label for="javascript">Covishield</label><br>
-                  <input type="radio" id="Covaxin" name="vaccine" value="COVAXIN" >
-                  <label for="javascript">Covaxin</label><br>
-                  <input type="radio" id="SputnikV" name="vaccine" value="SPUTNIK V" >
-                  <label for="javascript">Sputnik V</label><br>
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                  <input type="radio" class="any" name="fee_type" value="" checked="checked">
-                  <label for="javascript">Any</label><br>
-                  <input type="radio" id="Free" name="fee_type" value="Free" >
-                  <label for="javascript">Free</label><br>
-                  <input type="radio" id="Paid" name="fee_type" value="Paid" >
-                  <label for="javascript">Paid</label><br>
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                  <input type="radio" class="all" name="available_capacity_dose" value="" checked="checked">
-                  <label for="javascript">Any</label><br>
-                  <input type="radio" id="dose1" name="available_capacity_dose" value="1" >
-                  <label for="javascript">Dose1</label><br>
-                  <input type="radio" id="dose2" name="available_capacity_dose" value="2" >
-                  <label for="javascript">Dose2</label><br>
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                <div>
-                  <input type="radio" id="today" name="check_date" value="" >
-                  <label for="javascript">Today</label><br>
-                  <input type="radio" id="tommorrow" name="check_date" value="" checked="checked" >
-                  <label for="javascript">Tommorrow</label><br>
-                  <input type="radio" id="dayafter" name="check_date" value="" >
-                  <label for="javascript">Dayafter</label><br>
-                <div class="m-2">
-                <label>Pincode</label>
-                <input id="pincode"  name="pincode" type="text" placeholder="eg: 695001,695002,695003" />
+        <form  autocomplete="off">
+            <div class="row col-md-12">
+                <div class="col-md-2 col-sm-12 col-xs-12">
+                      <input type="radio" class="all" name="district_name" value="" checked="checked">
+                      <label for="html">None</label><br>
+                      <input type="radio" id="Alappuzha" name="district_name" value="301" class="process">
+                      <label for="html">Alappuzha</label><br>
+                      <input type="radio" id="Ernakulam" name="district_name" value="307" class="process">
+                      <label for="css">Ernakulam</label><br>
+                      <input type="radio" id="Idukki" name="district_name" value="306" class="process">
+                      <label for="javascript">Idukki</label><br>
+                      <input type="radio" id="Kannur" name="district_name" value="297" class="process">
+                      <label for="javascript">Kannur</label><br>
+                      <input type="radio" id="Kasaragod" name="district_name" value="295" class="process">
+                      <label for="javascript">Kasaragod</label><br>
+                      <input type="radio" id="Kollam" name="district_name" value="298" class="process">
+                      <label for="javascript">Kollam</label><br>
+                      <input type="radio" id="Kottayam" name="district_name" value="304" class="process">
+                      <label for="javascript">Kottayam</label><br>
+                      <input type="radio" id="Kozhikode" name="district_name" value="305" class="process">
+                      <label for="javascript">Kozhikode</label><br>
+                      <input type="radio" id="Malappuram" name="district_name" value="302" class="process">
+                      <label for="javascript">Malappuram</label><br>
+                      <input type="radio" id="Palakkad" name="district_name" value="308" class="process">
+                      <label for="javascript">Palakkad</label><br>
+                      <input type="radio" id="Pathanamthitta" name="district_name" value="300" class="process">
+                      <label for="javascript">Pathanamthitta</label><br>
+                      <input type="radio" id="Thiruvananthapuram" name="district_name" value="296" class="process">
+                      <label for="javascript">Thiruvananthapuram</label><br>
+                      <input type="radio" id="Thrissur" name="district_name" value="303" class="process">
+                      <label for="javascript">Thrissur</label><br>
+                      <input type="radio" id="Wayanad" name="district_name" value="299" class="process">
+                      <label for="javascript">Wayanad</label><br>
+                </div>
+                <div class="col-md-2 col-sm-6 col-xs-6">
+                      <input type="radio" class="all" name="min_age_limit" checked="checked" value="">
+                      <label for="html"> All </label><br>
+                      <input type="radio" id="18" name="min_age_limit" value="18" >
+                      <label for="html"> 18 & Above </label><br>
+                      <input type="radio" id="18" name="min_age_limit" value="18" >
+                      <label for="css"> 18-44 Only</label><br>
+                      <input type="radio" id="45" name="min_age_limit" value="45" >
+                      <label for="javascript"> 45 & Above </label><br>
+                </div> 
+                <div class="col-md-2 col-sm-6 col-xs-6">
+                      <input type="radio" class="all" name="vaccine" value="" checked="checked">
+                      <label for="javascript">All</label><br>
+                      <input type="radio" id="Covishield" name="vaccine" value="COVISHIELD" >
+                      <label for="javascript">Covishield</label><br>
+                      <input type="radio" id="Covaxin" name="vaccine" value="COVAXIN" >
+                      <label for="javascript">Covaxin</label><br>
+                      <input type="radio" id="SputnikV" name="vaccine" value="SPUTNIK V" >
+                      <label for="javascript">Sputnik V</label><br>
+                </div>
+                <div class="col-md-2 col-sm-6 col-xs-6">
+                      <input type="radio" class="any" name="fee_type" value="" checked="checked">
+                      <label for="javascript">Any</label><br>
+                      <input type="radio" id="Free" name="fee_type" value="Free" >
+                      <label for="javascript">Free</label><br>
+                      <input type="radio" id="Paid" name="fee_type" value="Paid" >
+                      <label for="javascript">Paid</label><br>
+                </div>
+                <div class="col-md-2 col-sm-6 col-xs-6">
+                      <input type="radio" class="all" name="available_capacity_dose" value="" checked="checked">
+                      <label for="javascript">Any</label><br>
+                      <input type="radio" id="dose1" name="available_capacity_dose" value="1" >
+                      <label for="javascript">Dose1</label><br>
+                      <input type="radio" id="dose2" name="available_capacity_dose" value="2" >
+                      <label for="javascript">Dose2</label><br>
+                </div>
+                <div class="col-md-2 col-sm-6 col-xs-6">
+                    <div>
+                          <input type="radio" id="today" name="check_date" value="" >
+                          <label for="javascript">Today</label><br>
+                          <input type="radio" id="tommorrow" name="check_date" value="" checked="checked" >
+                          <label for="javascript">Tommorrow</label><br>
+                          <input type="radio" id="dayafter" name="check_date" value="" >
+                          <label for="javascript">Dayafter</label><br>
+                        <div class="m-2">
+                            <label>Pincode</label>
+                            <input id="pincode"  name="pincode" type="text" placeholder="eg: 695001,695002,695003" />
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
         <div class="col-md-12 text-center" id="div_placeholder">
 
         </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
     <script>
-
         $('body').on('change', '.process', function (e) {
             clearInterval(reloader);
             process();
@@ -194,7 +196,7 @@
                     }
                     startCount();
                     if (sessions.length < 1 || availability_count === 0) {
-                        table += '<tr><td colspan="9">No Records Available</td></tr>';
+                        table += '<tr><td colspan="9">No Slots Available</td></tr>';
                         $('#div_placeholder').html('');
                         $('#div_placeholder').html(table);
                         return false;
