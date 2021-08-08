@@ -171,7 +171,7 @@
                     for (const resp of sessions) {
                         if (!vaccine || vaccine === resp.vaccine) {
                             if (!fee_type || fee_type === resp.fee_type) {
-                                if (((!available_capacity_dose && (resp.available_capacity_dose1 > 1 || resp.available_capacity_dose2 > 1)) || ((available_capacity_dose === 1 && resp.available_capacity_dose1 > 1) || (available_capacity_dose === 2 && resp.available_capacity_dose2 > 1))) || overallList === 1) {
+                                if (((!available_capacity_dose && (resp.available_capacity_dose1 > 1 || resp.available_capacity_dose2 > 1)) || ((available_capacity_dose == 1 && resp.available_capacity_dose1 > 1) || (available_capacity_dose == 2 && resp.available_capacity_dose2 > 1))) || overallList == 1) {
                                     if (!pincode || pincodeArr.includes(String(resp.pincode))) {
                                         if (!min_age_limit || min_age_limit === resp.min_age_limit) {
                                             table += '<tr>';
